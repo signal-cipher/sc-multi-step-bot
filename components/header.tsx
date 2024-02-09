@@ -2,7 +2,6 @@ import * as React from 'react'
 import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
-import { auth } from '@/auth'
 import { clearChats } from '@/app/actions'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Sidebar } from '@/components/sidebar'
@@ -20,34 +19,18 @@ import { UserMenu } from '@/components/user-menu'
 import { SidebarMobile } from './sidebar-mobile'
 import { SidebarToggle } from './sidebar-toggle'
 import { ChatHistory } from './chat-history'
+import Image from 'next/image'
 
 async function UserOrLogin() {
-  const session = await auth()
   return (
     <>
-      {session?.user ? (
-        <>
-          <SidebarMobile>
-            <ChatHistory userId={session.user.id} />
-          </SidebarMobile>
-          <SidebarToggle />
-        </>
-      ) : (
-        <Link href="/" target="_blank" rel="nofollow">
-          <IconNextChat className="w-6 h-6 mr-2 dark:hidden" inverted />
-          <IconNextChat className="hidden w-6 h-6 mr-2 dark:block" />
-        </Link>
-      )}
-      <div className="flex items-center">
-        <IconSeparator className="w-6 h-6 text-muted-foreground/50" />
-        {session?.user ? (
-          <UserMenu user={session.user} />
-        ) : (
-          <Button variant="link" asChild className="-ml-2">
-            <Link href="/sign-in?callbackUrl=/">Login</Link>
-          </Button>
-        )}
-      </div>
+      <Link href="/" target="_blank" rel="nofollow">
+        <img
+          src="https://framerusercontent.com/images/JGs8WFixcVVZert7GnE0iXO9CI.svg"
+          alt="Signal & Cipher"
+          className="w-8 h-auto"
+        />
+      </Link>
     </>
   )
 }
@@ -60,25 +43,39 @@ export function Header() {
           <UserOrLogin />
         </React.Suspense>
       </div>
+      {/* <div className="flex items-center justify-end space-x-2">
+        <span className="text-sm w-48 text-right">Google Sheet ID:</span>
+        <input
+          type="text"
+          value="1SGbS_kU8d3Lk_k27MLj5airqIBcMjB23Ed1jMs-t5y0"
+          className="w-full px-4 py-1 focus-within:outline-none sm:text-sm overflow-hidden max-h-60 grow bg-background sm:rounded-md sm:border"
+        />
+      </div> */}
+
       <div className="flex items-center justify-end space-x-2">
-        <a
+        <Link
+          href="https://docs.google.com/spreadsheets/d/1SGbS_kU8d3Lk_k27MLj5airqIBcMjB23Ed1jMs-t5y0/edit?usp=sharing"
           target="_blank"
-          href="https://github.com/vercel/nextjs-ai-chatbot/"
-          rel="noopener noreferrer"
-          className={cn(buttonVariants({ variant: 'outline' }))}
+          rel="nofollow"
         >
-          <IconGitHub />
-          <span className="hidden ml-2 md:flex">GitHub</span>
-        </a>
-        <a
-          href="https://github.com/vercel/nextjs-ai-chatbot/"
-          target="_blank"
-          className={cn(buttonVariants())}
-        >
-          <IconVercel className="mr-2" />
-          <span className="hidden sm:block">Deploy to Vercel</span>
-          <span className="sm:hidden">Deploy</span>
-        </a>
+          <div className="text-sm w-48 text-right underline flex items-center justify-end gap-1">
+            Google Sheet
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+              />
+            </svg>
+          </div>
+        </Link>
       </div>
     </header>
   )

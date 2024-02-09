@@ -43,17 +43,12 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
       id,
       body: {
         id,
-        previewToken
+        previewToken,
+        googleSheetId: '1SGbS_kU8d3Lk_k27MLj5airqIBcMjB23Ed1jMs-t5y0'
       },
       onResponse(response) {
         if (response.status === 401) {
           toast.error(response.statusText)
-        }
-      },
-      onFinish() {
-        if (!path.includes('chat')) {
-          router.push(`/chat/${id}`, { shallow: true, scroll: false })
-          router.refresh()
         }
       }
     })
