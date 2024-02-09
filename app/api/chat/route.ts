@@ -5,8 +5,6 @@ import fetch from 'node-fetch'
 
 import { nanoid } from '@/lib/utils'
 
-export const runtime = 'node'
-
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 })
