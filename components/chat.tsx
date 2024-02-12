@@ -16,7 +16,7 @@ import {
   DialogHeader,
   DialogTitle
 } from '@/components/ui/dialog'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { toast } from 'react-hot-toast'
@@ -38,6 +38,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
   const [previewTokenDialog, setPreviewTokenDialog] = useState(IS_PREVIEW)
   const [previewTokenInput, setPreviewTokenInput] = useState(previewToken ?? '')
   const [messageContent, setMessageContent] = useState('')
+  const [botPrompts, setBotPrompts] = useState({}) as any
 
   const { messages, append, reload, stop, isLoading, input, setInput } =
     useChat({
@@ -46,7 +47,8 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
       body: {
         id,
         previewToken,
-        googleSheetId: '1SGbS_kU8d3Lk_k27MLj5airqIBcMjB23Ed1jMs-t5y0'
+        googleSheetId: '1SGbS_kU8d3Lk_k27MLj5airqIBcMjB23Ed1jMs-t5y0',
+        prompt: botPrompts?.bot1
       },
       onResponse(response) {
         if (response.status === 401) {
@@ -54,7 +56,6 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         }
       },
       onFinish: async (message: Message) => {
-        console.log('@@@ message', message.content)
         const previousContent = messageContent
         setMessageContent(message.content)
 
@@ -63,6 +64,10 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         }
       }
     })
+
+  useEffect(() => {
+    getBotPrompts()
+  }, [])
 
   const saveToSheets = async (content: any) => {
     try {
@@ -81,7 +86,6 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
       }
 
       const rowIndex = await response.json()
-      console.log('@@@ rowIndex', rowIndex)
 
       toast.success('Output has been saved to Google Sheets.')
 
@@ -89,7 +93,9 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
       const bots = [
         {
           name: 'Bot2',
-          prompt: `I want you to become my marketing strategy expert. Your goal is to help me craft the best possible project brief for my needs. The brief will be used by marketing experts to create the recommended campaigns.
+          prompt:
+            botPrompts?.bot2 ||
+            `I want you to become my marketing strategy expert. Your goal is to help me craft the best possible project brief for my needs. The brief will be used by marketing experts to create the recommended campaigns.
 
 You will follow the following process:
 Your first response will be to create an initial brief based on the user input. Once complete will need to improve it through continual iterations by going through the next steps.
@@ -107,12 +113,13 @@ Generate 3 different and distinct campaign concepts which MUST each include the 
 
 - A detailed creative description of the campaign.
 - 3 alternate campaign names.
-- How the campaign engages the customer personas.
-- Use DALL-E to create 6 sample images of the campaign.`
+- How the campaign engages the customer personas.`
         },
         {
           name: 'Bot3',
-          prompt: `I want you to become my marketing strategy expert. Your goal is to help me craft the best possible project brief for my needs. The brief will be used by marketing experts to create the recommended campaigns.
+          prompt:
+            botPrompts?.bot3 ||
+            `I want you to become my marketing strategy expert. Your goal is to help me craft the best possible project brief for my needs. The brief will be used by marketing experts to create the recommended campaigns.
 
 You will follow the following process:
 Your first response will be to create an initial brief based on the provided input. 
@@ -158,10 +165,8 @@ Create an optimized weekly project calendar that structures the project tasks an
             `Error: ${botResponse.status} - ${botResponse.statusText}`
           )
         }
-        console.log('@@@ botResponse  ', botResponse)
 
         const botData = await botResponse.text()
-        console.log('@@@ botData', botData)
 
         // Save bot response to Google Sheets
         const sheetResponse = await fetch('/api/sheets/update', {
@@ -183,11 +188,24 @@ Create an optimized weekly project calendar that structures the project tasks an
         }
 
         const sheetData = await sheetResponse.json()
-        console.log('@@@ sheetData', sheetData)
+        console.log(`${bot.name} saved to Google Sheets at row ${sheetData}`)
       }
     } catch (error) {
       console.error('Error saving to Google Sheets:', error)
       toast.error('Failed to save to Google Sheets. Please try again.')
+    }
+  }
+
+  const getBotPrompts = async () => {
+    try {
+      const response = await fetch('/api/sheets/read')
+      const data = await response.json()
+      setBotPrompts(data)
+
+      console.log('bot prompts loaded')
+    } catch (error) {
+      console.error('Error fetching bot prompts:', error)
+      toast.error('Failed to fetch bot prompts.')
     }
   }
 
@@ -212,6 +230,7 @@ Create an optimized weekly project calendar that structures the project tasks an
         messages={messages}
         input={input}
         setInput={setInput}
+        prompt={botPrompts?.bot1}
       />
 
       <Dialog open={previewTokenDialog} onOpenChange={setPreviewTokenDialog}>

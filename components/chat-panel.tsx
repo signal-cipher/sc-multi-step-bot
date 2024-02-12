@@ -8,6 +8,7 @@ import { ButtonScrollToBottom } from '@/components/button-scroll-to-bottom'
 import { IconRefresh, IconShare, IconStop } from '@/components/ui/icons'
 import { FooterText } from '@/components/footer'
 import { ChatShareDialog } from '@/components/chat-share-dialog'
+import toast from 'react-hot-toast'
 
 export interface ChatPanelProps
   extends Pick<
@@ -22,6 +23,7 @@ export interface ChatPanelProps
   > {
   id?: string
   title?: string
+  prompt?: string[]
 }
 
 export function ChatPanel({
@@ -33,7 +35,8 @@ export function ChatPanel({
   reload,
   input,
   setInput,
-  messages
+  messages,
+  prompt
 }: ChatPanelProps) {
   const [shareDialogOpen, setShareDialogOpen] = React.useState(false)
 
@@ -87,6 +90,11 @@ export function ChatPanel({
         <div className="px-4 py-2 space-y-4 border-t shadow-lg bg-background sm:rounded-t-xl sm:border md:py-4">
           <PromptForm
             onSubmit={async value => {
+              if (!prompt) {
+                toast.error('No prompt found')
+                return
+              }
+
               await append({
                 id,
                 content: value,

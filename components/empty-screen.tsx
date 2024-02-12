@@ -24,7 +24,10 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
         </h1>
         <p className="mb-2 leading-normal text-muted-foreground">
           If you have any questions or need my assistance with brainstorming
-          ideas, please feel free to let me know.
+          ideas, please feel free to let me know.{' '}
+        </p>
+        <p className="mb-2 leading-normal text-muted-foreground">
+          {`Message "Save" to save the last message to your Google Sheet and trigger other bots.`}
         </p>
         <p className="leading-normal text-muted-foreground">
           You can start a conversation here or:
