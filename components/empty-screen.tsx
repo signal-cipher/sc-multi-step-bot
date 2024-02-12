@@ -6,16 +6,12 @@ import { IconArrowRight } from '@/components/ui/icons'
 
 const exampleMessages = [
   {
-    heading: 'Personalized Financial Planning with AI Integration',
-    message: ''
+    heading: '(1) Launch a new fragrance line',
+    message: 'Launch a new fragrance line'
   },
   {
-    heading: 'Enhanced Mobile Banking Experience',
-    message: ''
-  },
-  {
-    heading: 'Interactive Financial Education Workshops and Webinars',
-    message: ''
+    heading: '(2) Build an event experience that resonates with our customers',
+    message: 'Build an event experience that resonates with our customers'
   }
 ]
 
@@ -24,14 +20,14 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
     <div className="mx-auto max-w-2xl px-4">
       <div className="rounded-lg border bg-background p-8">
         <h1 className="mb-2 text-lg font-semibold">
-          Welcome to Idea Generator Bot!
+          Welcome to Expert Strategist Bot!
         </h1>
         <p className="mb-2 leading-normal text-muted-foreground">
           If you have any questions or need my assistance with brainstorming
           ideas, please feel free to let me know.
         </p>
         <p className="leading-normal text-muted-foreground">
-          You can start a conversation here or try the following examples:
+          You can start a conversation here or:
         </p>
         <div className="mt-4 flex flex-col items-start space-y-2">
           {exampleMessages.map((message, index) => (

@@ -59,7 +59,6 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         setMessageContent(message.content)
 
         if (input.toLowerCase() === 'save') {
-          toast.success('saving')
           await saveToSheets(previousContent)
         }
       }
@@ -201,8 +200,7 @@ Create an optimized weekly project calendar that structures the project tasks an
             <ChatScrollAnchor trackVisibility={isLoading} />
           </>
         ) : (
-          // <EmptyScreen setInput={setInput} />
-          <div></div>
+          <EmptyScreen setInput={setInput} />
         )}
       </div>
       <ChatPanel
