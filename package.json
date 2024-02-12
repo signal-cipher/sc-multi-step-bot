@@ -30,6 +30,8 @@
     "focus-trap-react": "^10.2.3",
     "framer-motion": "^10.16.12",
     "geist": "^1.1.0",
+    "google-auth-library": "^9.6.3",
+    "google-spreadsheet": "^4.1.1",
     "googleapis": "^129.0.0",
     "nanoid": "^5.0.3",
     "next": "14.0.4-canary.17",

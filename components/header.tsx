@@ -43,16 +43,16 @@ export function Header() {
           <UserOrLogin />
         </React.Suspense>
       </div>
-      {/* <div className="flex items-center justify-end space-x-2">
+      <div className="flex items-center justify-end space-x-2">
         <span className="text-sm w-48 text-right">Google Sheet ID:</span>
         <input
           type="text"
           value="1SGbS_kU8d3Lk_k27MLj5airqIBcMjB23Ed1jMs-t5y0"
           className="w-full px-4 py-1 focus-within:outline-none sm:text-sm overflow-hidden max-h-60 grow bg-background sm:rounded-md sm:border"
         />
-      </div> */}
+      </div>
 
-      <div className="flex items-center justify-end space-x-2">
+      {/* <div className="flex items-center justify-end space-x-2">
         <Link
           href="https://docs.google.com/spreadsheets/d/1SGbS_kU8d3Lk_k27MLj5airqIBcMjB23Ed1jMs-t5y0/edit?usp=sharing"
           target="_blank"
@@ -76,7 +76,7 @@ export function Header() {
             </svg>
           </div>
         </Link>
-      </div>
+      </div> */}
     </header>
   )
 }

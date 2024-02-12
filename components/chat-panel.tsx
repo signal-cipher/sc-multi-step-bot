@@ -67,6 +67,17 @@ export function ChatPanel({
                       <IconShare className="mr-2" />
                       Share
                     </Button>
+                    <ChatShareDialog
+                      open={shareDialogOpen}
+                      onOpenChange={setShareDialogOpen}
+                      onCopy={() => setShareDialogOpen(false)}
+                      shareChat={shareChat}
+                      chat={{
+                        id,
+                        title,
+                        messages
+                      }}
+                    />
                   </>
                 ) : null}
               </div>
