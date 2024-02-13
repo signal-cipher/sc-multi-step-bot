@@ -27,5 +27,7 @@ export async function POST(req: Request) {
     temperature: 0.7
   })
 
-  return new NextResponse(completion.choices[0].message.content)
+  return new NextResponse(completion.choices[0].message.content, {
+    status: 200
+  })
 }
