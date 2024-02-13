@@ -6,10 +6,18 @@ const GOOGLE_SERVICE_ACCOUNT_EMAIL =
   process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || ''
 const GOOGLE_SERVICE_PRIVATE_KEY = process.env.GOOGLE_SERVICE_PRIVATE_KEY as any
 
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
 export async function GET(req: Request) {
   const data = await getBotPrompts()
 
-  return new NextResponse(JSON.stringify(data))
+  return new NextResponse(JSON.stringify(data), {
+    status: 200,
+    headers: {
+      'Cache-Control': 'no-cache, no-store, must-revalidate'
+    }
+  })
 }
 
 const getBotPrompts = async () => {
