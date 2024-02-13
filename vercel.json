@@ -1,7 +1,7 @@
 {
   "functions": {
-    "api/bot/*": {
-      "maxDuration": 3000
+    "api/bot/*.ts": {
+      "maxDuration": 300
     }
   }
 }
