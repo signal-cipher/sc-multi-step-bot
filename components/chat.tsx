@@ -151,7 +151,13 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
 
   const getBotPrompts = async () => {
     try {
-      const response = await fetch('/api/sheets/read')
+      const url = `/api/sheets/read?timestamp=${new Date().getTime()}`
+      const response = await fetch(url)
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`) // Throws an error if response is not ok
+      }
+
       const data = await response.json()
       setBotPrompts(data)
 
