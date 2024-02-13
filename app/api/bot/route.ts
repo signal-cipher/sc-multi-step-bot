@@ -11,7 +11,6 @@ export const runtime = 'edge'
 export async function POST(req: Request) {
   const { prompt, content } = await req.json()
 
-
   const completion = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',
     messages: [
@@ -26,7 +25,6 @@ export async function POST(req: Request) {
     ],
     temperature: 0.7
   })
-
 
   return new NextResponse(completion.choices[0].message.content)
 }
