@@ -42,6 +42,8 @@ const getBotPrompts = async () => {
     // Read rows
     const rows = await sheet.getRows() // can pass in { limit, offset }
 
+    console.log('@@@ rows', rows)
+
     return {
       bot1: rows[0].get('Bot1'),
       bot2: rows[0].get('Bot2'),

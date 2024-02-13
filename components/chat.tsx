@@ -224,72 +224,6 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
     }
   }
 
-  const test = async () => {
-    const input = `### Title: Launching Paco Rabanne's New Fragrance Line: A Symphony of Scent and Innovation
-
-    **Introduction:**
-    
-    Paco Rabanne is set to redefine the luxury fragrance landscape with its latest venture: a new fragrance line that embodies the brand's hallmark of innovation and boldness. This line is not just a collection of scents but a manifesto of Paco Rabanne's identity, crafted to resonate with the modern connoisseur of luxury fragrances. The campaign will navigate the competitive terrain of the luxury fragrance market by emphasizing the unique blend of tradition and avant-garde that only Paco Rabanne can offer. The tone will be sophisticated yet daring, appealing to those who dare to stand out.
-    
-    **Customer Personas:**
-    
-    1. **The Trendsetting Aficionado, Alex:**
-       - Age: 28-35
-       - Sex: Non-binary
-       - Profession: Creative Director
-       - Information Sources: Instagram, Vogue, GQ
-       - Objections: Dislikes mainstream scents
-       - Goals: To be a trendsetter
-       - Pain Points: Finding unique fragrances that match their identity
-       - Buying Behaviors: Prefers exclusive, limited-edition products
-       - Lifestyle Preferences: Enjoys art galleries, fashion shows, and underground clubs
-    
-    2. **The Luxury Connoisseur, Priya:**
-       - Age: 35-45
-       - Sex: Female
-       - Profession: CEO/Entrepreneur
-       - Information Sources: LinkedIn, Forbes, high-end blogs
-       - Objections: Skeptical about the value for money
-       - Goals: To indulge in and be surrounded by luxury
-       - Pain Points: Products that don’t match her status
-       - Buying Behaviors: Invests in high-quality, timeless pieces
-       - Lifestyle Preferences: Attends exclusive events, travels first-class, enjoys fine dining
-    
-    3. **The Sophisticated Rebel, Marco:**
-       - Age: 30-40
-       - Sex: Male
-       - Profession: Architect
-       - Information Sources: Architectural Digest, TED Talks, Pinterest
-       - Objections: Avoids anything that feels too commercial
-       - Goals: To express individuality through choices
-       - Pain Points: Finding products that align with his unique taste
-       - Buying Behaviors: Looks for craftsmanship and story behind products
-       - Lifestyle Preferences: Prefers minimalist design, boutique hotels, and artisan cafes
-    
-    **Campaign Concepts:**
-    
-    1. **"Scent of Innovation":**
-       - Creative Description: This campaign focuses on the groundbreaking approach to creating the fragrance, highlighting the collaboration with world-renowned perfumers and the use of rare, sustainably sourced ingredients. The visuals will be sleek and futuristic, with a narrative that tells the story of each scent's creation.
-       - Alternate Campaign Names: "Fragrance Forward", "Innovate Scent", "Future of Fragrance"
-       - Associated Customer Persona: The Trendsetting Aficionado, Alex
-       - Engagement: Through Instagram stories and IGTV, showcase behind-the-scenes looks at the creation process, including interviews with the perfumers. Exclusive early access for followers to sample the fragrance.
-    
-    2. **"Echoes of Luxury":**
-       - Creative Description: This campaign exudes opulence, focusing on the luxurious aspects of the fragrance line, from the exquisite packaging to the exclusive ingredients. The tone will be elegant and refined, with visuals that feature the fragrance in lavish settings.
-       - Alternate Campaign Names: "Luxury Unveiled", "Scent of Elegance", "Opulent Aromas"
-       - Associated Customer Persona: The Luxury Connoisseur, Priya
-       - Engagement: High-end influencer partnerships to showcase the fragrance in luxurious lifestyles. Private launch events in upscale venues for influencers and VIP customers.
-    
-    3. **"Rebel Essence":**
-       - Creative Description: Emphasizing the bold and unconventional aspects of the fragrance, this campaign targets those who see their scent as an extension of their personality. The visuals will be edgy and artistic, challenging traditional perceptions of luxury fragrances.
-       - Alternate Campaign Names: "Scent of Rebellion", "Unconventional Aromas", "Rebel in a Bottle"
-       - Associated Customer Persona: The Sophisticated Rebel, Marco
-       - Engagement: Collaborate with avant-garde artists to create installations inspired by the fragrance. Host pop-up events in unconventional spaces, inviting attendees to experience the scent in a unique setting.`
-
-    const result = mapAndFormatData(input)
-    console.log('@@@ result', result)
-  }
-
   function mapAndFormatData(input: string) {
     try {
       // Split the input by **Customer Personas:** and **Campaign Concepts:** to separate sections
@@ -355,7 +289,6 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         setInput={setInput}
         prompt={botPrompts?.bot1}
       />
-      {/* <button onClick={test}>test</button> */}
 
       <Dialog open={previewTokenDialog} onOpenChange={setPreviewTokenDialog}>
         <DialogContent>

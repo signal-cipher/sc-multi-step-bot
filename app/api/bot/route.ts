@@ -12,6 +12,8 @@ export const maxDuration = 300
 export async function POST(req: Request) {
   const { prompt, content } = await req.json()
 
+  console.log('@@@ content', content)
+
   const completion = await openai.chat.completions.create({
     model: 'gpt-4-turbo-preview',
     messages: [

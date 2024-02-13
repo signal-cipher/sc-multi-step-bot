@@ -1,3 +1,4 @@
+import { nanoid } from '@/lib/utils'
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 import OpenAI from 'openai'
 
@@ -27,7 +28,16 @@ export async function POST(req: Request) {
     stream: true
   })
 
-  const stream = OpenAIStream(res)
+  const stream = OpenAIStream(res, {
+    async onCompletion(completion) {
+      const title = json.messages[0].content.substring(0, 100)
+      const id = json.id ?? nanoid()
+      const createdAt = Date.now()
+      const payload = [createdAt, title, completion]
+
+      console.log('@@@ payload', payload)
+    }
+  })
 
   return new StreamingTextResponse(stream)
 }
