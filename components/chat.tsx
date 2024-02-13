@@ -156,7 +156,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
       setBotPrompts(data)
 
       console.log('bot prompts loaded')
-      console.log('@@@ bots', data)
+      console.log('bots', data)
     } catch (error) {
       console.error('Error fetching bot prompts:', error)
       toast.error('Failed to fetch bot prompts.')
