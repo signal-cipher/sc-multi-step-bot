@@ -61,8 +61,12 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         const previousContent = messageContent
         setMessageContent(message.content)
 
-        if (input.toLowerCase() === 'save') {
-          await saveToSheets(previousContent)
+        // if (input.toLowerCase() === 'save') {
+        //   await saveToSheets(previousContent)
+        // }
+
+        if (message.content.toLowerCase().includes('project plan overview')) {
+          await saveToSheets(message.content)
         }
       }
     })
