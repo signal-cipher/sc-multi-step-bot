@@ -27,7 +27,7 @@ export async function POST(req: Request) {
       }
     ],
     max_tokens: 4096,
-    temperature: 0
+    temperature: 0.2
   })
 
   return new NextResponse(completion.choices[0].message.content, {

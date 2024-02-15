@@ -26,7 +26,7 @@ export async function POST(req: Request) {
       ...messages
     ],
     max_tokens: 4096,
-    temperature: 0,
+    temperature: 0.2,
     stream: true
   })
 
