@@ -93,7 +93,9 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
 
       const rowIndex = await response.json()
 
-      toast.success('Output has been saved to Google Sheets.')
+      toast.success('Saved to Drive.', {
+        duration: 8000
+      })
 
       const bot2Response = await fetch('/api/bot', {
         method: 'POST',

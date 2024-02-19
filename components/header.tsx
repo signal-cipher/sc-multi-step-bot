@@ -59,7 +59,7 @@ export function Header() {
           rel="nofollow"
         >
           <div className="text-sm w-48 text-right underline flex items-center justify-end gap-1">
-            Google Sheet
+            Google Sheets
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

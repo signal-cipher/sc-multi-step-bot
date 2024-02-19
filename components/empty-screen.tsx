@@ -19,32 +19,22 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
   return (
     <div className="mx-auto max-w-2xl px-4">
       <div className="rounded-lg border bg-background p-8">
-        <h1 className="mb-2 text-lg font-semibold">
-          Welcome to Expert Strategist Bot!
-        </h1>
+        {/* <h1 className="mb-2 text-lg font-semibold">
+          {`Hi! I'm here to guide you with a panel of expert agents to help solve
+          your organizations initiatives.`}
+        </h1> */}
+        {/* <p className="mb-2 leading-normal text-muted-foreground">
+          {`Hi! I'm here to guide you with a panel of expert agents to help solve
+          your organizations initiatives.`}
+        </p> */}
         <p className="mb-2 leading-normal text-muted-foreground">
-          If you have any questions or need my assistance with brainstorming
-          ideas, please feel free to let me know.{' '}
+          {`Hi! I'm here to guide you with a panel of expert agents to help solve
+          your organizations initiatives. Ever wonder what it would take to get
+          that product launch off the ground or planning a major rebranding? I
+          can help you come up with project objectives for Paco Rabanne. Think
+          of me as a group of expert strategists here to help you with your
+          project.`}
         </p>
-        <p className="mb-2 leading-normal text-muted-foreground">
-          {`Message "Save" to save the last message to your Google Sheet and trigger other bots.`}
-        </p>
-        <p className="leading-normal text-muted-foreground">
-          You can start a conversation here or:
-        </p>
-        <div className="mt-4 flex flex-col items-start space-y-2">
-          {exampleMessages.map((message, index) => (
-            <Button
-              key={index}
-              variant="link"
-              className="h-auto p-0 text-base"
-              onClick={() => setInput(message.message)}
-            >
-              <IconArrowRight className="mr-2 text-muted-foreground" />
-              {message.heading}
-            </Button>
-          ))}
-        </div>
       </div>
     </div>
   )
