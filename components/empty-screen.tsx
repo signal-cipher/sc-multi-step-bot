@@ -31,9 +31,8 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, 'setInput'>) {
           {`Hi! I'm here to guide you with a panel of expert agents to help solve
           your organizations initiatives. Ever wonder what it would take to get
           that product launch off the ground or planning a major rebranding? I
-          can help you come up with project objectives for Paco Rabanne. Think
-          of me as a group of expert strategists here to help you with your
-          project.`}
+          can help you come up with your project objectives. Think of me as a
+          group of expert strategists here to help you with your project.`}
         </p>
       </div>
     </div>
