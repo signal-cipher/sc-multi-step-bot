@@ -49,7 +49,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
       body: {
         id,
         previewToken,
-        googleSheetId: '1SGbS_kU8d3Lk_k27MLj5airqIBcMjB23Ed1jMs-t5y0',
+        googleSheetId: process.env.NEXT_PUBLIC_SPREADSHEET_ID,
         prompt: botPrompts?.bot1
       },
       onResponse(response) {

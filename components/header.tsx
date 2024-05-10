@@ -1,25 +1,5 @@
-import * as React from 'react'
 import Link from 'next/link'
-
-import { cn } from '@/lib/utils'
-import { clearChats } from '@/app/actions'
-import { Button, buttonVariants } from '@/components/ui/button'
-import { Sidebar } from '@/components/sidebar'
-import { SidebarList } from '@/components/sidebar-list'
-import {
-  IconGitHub,
-  IconNextChat,
-  IconSeparator,
-  IconVercel
-} from '@/components/ui/icons'
-import { SidebarFooter } from '@/components/sidebar-footer'
-import { ThemeToggle } from '@/components/theme-toggle'
-import { ClearHistory } from '@/components/clear-history'
-import { UserMenu } from '@/components/user-menu'
-import { SidebarMobile } from './sidebar-mobile'
-import { SidebarToggle } from './sidebar-toggle'
-import { ChatHistory } from './chat-history'
-import Image from 'next/image'
+import * as React from 'react'
 
 async function UserOrLogin() {
   return (
@@ -47,19 +27,42 @@ export function Header() {
         <span className="text-sm w-48 text-right">Google Sheet ID:</span>
         <input
           type="text"
-          defaultValue="1SGbS_kU8d3Lk_k27MLj5airqIBcMjB23Ed1jMs-t5y0"
+          defaultValue={process.env.NEXT_PUBLIC_SPREADSHEET_ID}
           className="w-full px-4 py-1 focus-within:outline-none sm:text-sm overflow-hidden max-h-60 grow bg-background sm:rounded-md sm:border"
         />
       </div> */}
 
-      <div className="flex items-center justify-end space-x-2">
+      <div className="flex items-center justify-end space-x-4">
         <Link
-          href="https://docs.google.com/spreadsheets/d/1SGbS_kU8d3Lk_k27MLj5airqIBcMjB23Ed1jMs-t5y0/edit?usp=sharing"
+          href={`https://docs.google.com/spreadsheets/d/${process.env.NEXT_PUBLIC_SPREADSHEET_ID}/edit?usp=sharing`}
           target="_blank"
           rel="nofollow"
         >
-          <div className="text-sm w-48 text-right underline flex items-center justify-end gap-1">
-            Google Sheets
+          <div className="text-sm text-right underline flex items-center justify-center gap-1">
+            Prompts
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-4 h-4"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+              />
+            </svg>
+          </div>
+        </Link>
+        <Link
+          href={`https://docs.google.com/spreadsheets/d/${process.env.NEXT_PUBLIC_PROMPTS_SPREADSHEET_ID}/edit?usp=sharing`}
+          target="_blank"
+          rel="nofollow"
+        >
+          <div className="text-sm text-right underline flex items-center justify-center gap-1">
+            Output
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
