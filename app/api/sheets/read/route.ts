@@ -29,7 +29,7 @@ const getBotPrompts = async () => {
   })
 
   const doc = new GoogleSpreadsheet(
-    process.env.NEXT_PUBLIC_PROMPTS_SPREADSHEET_ID,
+    process.env.NEXT_PUBLIC_PROMPTS_SPREADSHEET_ID || '',
     serviceAccountAuth
   ) as any
 
